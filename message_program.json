@@ -1,0 +1,119 @@
+{
+  "version": "0.1.0",
+  "name": "message_program",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "messageAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "setMessage",
+      "accounts": [
+        {
+          "name": "messageAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "newMessage",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "getMessage",
+      "accounts": [
+        {
+          "name": "messageAccount",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [],
+      "returns": "string"
+    },
+    {
+      "name": "addDetails",
+      "accounts": [
+        {
+          "name": "messageAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "newDetails",
+          "type": {
+            "vec": {
+              "defined": "Detail"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "MessageAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "details",
+            "type": {
+              "vec": {
+                "defined": "Detail"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "Detail",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "age",
+            "type": "u8"
+          },
+          {
+            "name": "sex",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
